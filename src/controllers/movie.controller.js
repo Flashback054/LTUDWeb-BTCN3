@@ -20,6 +20,8 @@ exports.getMovieById = catchAsync(async (req, res, next) => {
 // GET /movies/search/:searchStr
 // Get movie by search string
 exports.getMovieBySearch = catchAsync(async (req, res, next) => {
+	// Format search string to remove %20 for spaces
+	req.params.searchStr = req.params.searchStr.replace(/%20/g, " ");
 	const movie = await Movie.findOneBySearch(req.params.searchStr);
 	res.status(200).json(movie);
 });

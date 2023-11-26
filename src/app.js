@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config({
 });
 
 const movieRouter = require("./routes/movie.route");
+const nameRouter = require("./routes/name.route");
 const db = require("./database/database.js");
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 const port = process.env.PORT || 21502;
 
 app.use("/api/v1/movies", movieRouter);
+app.use("/api/v1/names", nameRouter);
 
 app.get("/", (req, res) => {
 	res.send("Welcome to the Movie API!");

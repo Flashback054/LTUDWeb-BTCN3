@@ -102,8 +102,8 @@ class Movie {
 		const movie = await db.any(
 			`SELECT * 
       FROM movie JOIN movie_actor ON movie.id = movie_actor.movieId
-      JOIN name ON name.id = movie_actor.actorId
-      WHERE title ILIKE $1 OR actor.name ILIKE $1
+      JOIN name ON name.id = movie_actor.nameId
+      WHERE title ILIKE $1 OR name.name ILIKE $1
       `,
 			[`%${searchStr}%`]
 		);
